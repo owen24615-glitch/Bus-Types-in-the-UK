@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bus Types in the UK</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .category-button {
+        padding: 15px 25px;
+        margin: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: 0.2s;
+    }
+    .category-button:hover {
+        background: #005dc0;
+    }
+
+    .bus-section {
+        display: none;
+        margin-top: 20px;
+    }
+
+    .bus-card {
+        background: white;
+        padding: 15px;
+        margin: 10px auto;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        text-align: left;
+    }
+
+    .update-box {
+        background: white;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 600px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        text-align: left;
+    }
+
+    .bus-name {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Bus Types in the UK</h1>
+
+<button class="category-button" onclick="showSection('home')">Home</button>
+<button class="category-button" onclick="showSection('minibus')">Minibuses</button>
+<button class="category-button" onclick="showSection('single')">Single Deckers</button>
+<button class="category-button" onclick="showSection('double')">Double Deckers</button>
+<button class="category-button" onclick="showSection('coach')">Coaches</button>
+
+<hr>
+
+<!-- HOME SECTION -->
+<div id="home" class="bus-section" style="display:block;">
+    <p>Welcome to the Bus Types in the UK website — choose a category above to view buses.</p>
+
+    <!-- Update Box 1 -->
+    <div class="update-box">
+        <h3>21:20, Thursday 11th December — Added more information to 3 bus models</h3>
+        <p>Updated three bus models with additional details and information.</p>
+    </div>
+
+    <!-- Update Box 2 -->
+    <div class="update-box">
+        <h3>07:19, Friday 12th December — Fixed Bug</h3>
+        <p>Fixed a bug that wouldn’t let you in to the sections.</p>
+    </div>
+</div>
+
+<!-- MINIBUS SECTION -->
+<div id="minibus" class="bus-section">
+    <h2>Minibuses</h2>
+    <div class="bus-card">
+        <div class="bus-name">Mercedes Sprinter</div>
+        Widely used for rural and demand-responsive services.
+    </div>
+    <div class="bus-card">
+        <div class="bus-name">Mellor Strata</div>
+        Lightweight and efficient, based on the Mercedes Sprinter chassis.
+    </div>
+    <div class="bus-card">
+        <div class="bus-name">Mellor Orion</div>
+        Small capacity, ideal for community services.
+    </div>
+    <div class="bus-card">
+        <div class="bus-name">Optare Solo Slimline</div>
+        A narrow mini/midi bus used on tight routes.
+    </div>
+</div>
+
+<!-- SINGLE DECKER SECTION -->
+<div id="single" class="bus-section">
+    <h2>Single Deckers</h2>
+    <div class="bus-card">
+        <div class="bus-name">ADL Enviro200 MMC</div>
+        One of the most common modern single-deck buses in the UK.
+    </div>
+    <div class="bus-card">
+        <div class="bus-name">Wright StreetLite</div>
+        Lightweight single decker, available in several lengths.
+    </div>
+    <div class="bus-card">
+        <div class="bus-name">Volvo B8RLE</div>
+        A high-performance single decker chassis found across cities.
+    </div>
+</div>
+
+<!-- DOUBLE DECKER SECTION -->
+<div id="double" class="bus-section">
+    <h2>Double Deckers</h2>
+    <div class="bus-card">
+        <div class="bus-name">ADL Enviro400 MMC</div>
+        A highly popular modern double-decker in the UK.
+    </div>
+    <div class="bus-card">
+        <div class="bus-name">Wright StreetDeck</div>
+        Lightweight diesel double decker with a modern design.
+    </div>
+    <div class="bus-card">
+        <div class="bus-name">Volvo B5LH Hybrid</div>
+        Hybrid double decker combining diesel and electric power.
+    </div>
+</div>
+
+<!-- COACH SECTION -->
+<div id="coach" class="bus-section">
+    <h2>Coaches</h2>
+    <div class="bus-card">
+        <div class="bus-name">Plaxton Panther</div>
+        A common long-distance coach with high comfort.
+    </div>
+    <div class="bus-card">
+        <div class="bus-name">Volvo B11R</div>
+        A powerful coach chassis for long motorway journeys.
+    </div>
+</div>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll(".bus-section").forEach(s => s.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
+</script>
+
+</body>
+</html>
