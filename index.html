@@ -14,45 +14,44 @@ body {
     text-align: center;
 }
 
-h1 {
-    margin-bottom: 20px;
-}
+h1 { margin-bottom: 10px; }
 
-.category-button {
-    padding: 15px 25px;
-    margin: 10px;
+.category-button, .sub-button {
+    padding: 12px 20px;
+    margin: 6px;
     background: #007bff;
     color: white;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
 }
 
-.category-button:hover {
-    background: #005dc0;
-}
+.sub-button { background:#444; }
+.category-button:hover, .sub-button:hover { opacity:0.85; }
 
-.bus-section {
-    display: none;
-    margin-top: 20px;
-}
+.bus-section { display:none; margin-top:20px; }
 
 .bus-card {
-    background: white;
-    padding: 15px;
-    margin: 10px auto;
-    width: 90%;
-    max-width: 520px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    text-align: left;
+    background:white;
+    padding:15px;
+    margin:10px auto;
+    max-width:600px;
+    border-radius:12px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.15);
+    text-align:left;
 }
 
-.bus-name {
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 8px;
+.bus-name { font-weight:bold; font-size:18px; margin-bottom:6px; }
+
+.search {
+    width:90%;
+    max-width:500px;
+    padding:12px;
+    font-size:16px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    margin:15px 0;
 }
 </style>
 </head>
@@ -61,150 +60,193 @@ h1 {
 
 <h1>Bus Types in the UK</h1>
 
+<input class="search" placeholder="Search buses, manufacturers or operators…" onkeyup="searchBuses(this.value)">
+
+<br>
+
 <button class="category-button" onclick="showSection('home')">Home</button>
 <button class="category-button" onclick="showSection('minibus')">Minibuses</button>
 <button class="category-button" onclick="showSection('single')">Single Deckers</button>
 <button class="category-button" onclick="showSection('double')">Double Deckers</button>
+<button class="category-button" onclick="showSection('electric')">Electric</button>
 <button class="category-button" onclick="showSection('coach')">Coaches</button>
+<button class="category-button" onclick="showSection('updates')">Updates</button>
 
 <hr>
 
 <!-- HOME -->
 <div id="home" class="bus-section" style="display:block;">
-    <p>Welcome to the Bus Types in the UK website — choose a category above to view buses.</p>
+<p>Browse UK buses by type, manufacturer, and operator.</p>
 
-    <div class="bus-card">
-        <div class="bus-name">21:20, Thursday 11th December</div>
-        Added more information to several bus models.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">07:19, Friday 12th December</div>
-        Fixed navigation and section display bugs.
-    </div>
+<div class="bus-card">
+<div class="bus-name">Major UK Operators</div>
+Arriva • First Bus • Stagecoach • Go-Ahead • National Express • Transport for London
+</div>
 </div>
 
-<!-- MINIBUSES -->
+<!-- MINIBUS -->
 <div id="minibus" class="bus-section">
-    <h2>Minibuses</h2>
+<h2>Minibuses</h2>
 
-    <div class="bus-card">
-        <div class="bus-name">Mercedes-Benz Sprinter</div>
-        Widely used for rural routes, school transport and demand-responsive services.
-    </div>
+<button class="sub-button">Optare</button>
+<button class="sub-button">Mellor</button>
+<button class="sub-button">ADL</button>
 
-    <div class="bus-card">
-        <div class="bus-name">Mellor Strata</div>
-        Lightweight low-floor minibus based on the Sprinter chassis.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">Mellor Orion</div>
-        Small community bus ideal for tight streets.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">Optare Solo Slimline</div>
-        Narrow mini/midi bus designed for restricted routes.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">ADL Enviro200 MMC (Short)</div>
-        Short-wheelbase version commonly used on minibus-style routes.
-    </div>
+<div class="bus-card">
+<div class="bus-name">Optare Solo Slimline</div>
+Used by Stagecoach and independent operators on narrow routes.
 </div>
 
-<!-- SINGLE DECKERS -->
+<div class="bus-card">
+<div class="bus-name">Mellor Strata</div>
+Sprinter-based low-floor minibus used nationwide.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Mellor Orion</div>
+Community and demand-responsive services.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">ADL Enviro200 MMC (Short)</div>
+Often replaces minibuses on busy rural routes.
+</div>
+</div>
+
+<!-- SINGLE -->
 <div id="single" class="bus-section">
-    <h2>Single Deckers</h2>
+<h2>Single Deckers</h2>
 
-    <div class="bus-card">
-        <div class="bus-name">ADL Enviro200 MMC</div>
-        One of the most common modern single deck buses in the UK.
-    </div>
+<button class="sub-button">ADL</button>
+<button class="sub-button">Wright</button>
+<button class="sub-button">Optare</button>
+<button class="sub-button">Volvo</button>
 
-    <div class="bus-card">
-        <div class="bus-name">Wright StreetLite</div>
-        Lightweight bus used by operators such as Arriva and First.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">Volvo B8RLE</div>
-        High-capacity single deck chassis paired with Wright or MCV bodies.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">Optare MetroCity</div>
-        Modern low-emission single deck bus built in the UK.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">Scania N230UD (Single-door variants)</div>
-        Used by several UK operators for urban routes.
-    </div>
+<div class="bus-card">
+<div class="bus-name">ADL Enviro200 MMC</div>
+UK’s most common single deck bus – Arriva, First, Stagecoach.
 </div>
 
-<!-- DOUBLE DECKERS -->
+<div class="bus-card">
+<div class="bus-name">Wright StreetLite</div>
+Lightweight single decker used by Arriva and Go-Ahead.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Optare MetroCity</div>
+British-built low-emission bus.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Volvo B8RLE</div>
+High-capacity single deck chassis with Wright/MCV bodies.
+</div>
+</div>
+
+<!-- DOUBLE -->
 <div id="double" class="bus-section">
-    <h2>Double Deckers</h2>
+<h2>Double Deckers</h2>
 
-    <div class="bus-card">
-        <div class="bus-name">ADL Enviro400 MMC</div>
-        The most widespread modern double decker in Britain.
-    </div>
+<button class="sub-button">ADL</button>
+<button class="sub-button">Wright</button>
+<button class="sub-button">Volvo</button>
 
-    <div class="bus-card">
-        <div class="bus-name">Wright StreetDeck</div>
-        Lightweight diesel and hybrid double deck bus.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">Volvo B5LH Hybrid</div>
-        Hybrid double deck bus common in London and major cities.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">Volvo B9TL</div>
-        Older but still widely used double deck chassis.
-    </div>
-
-    <div class="bus-card">
-        <div class="bus-name">Dennis Trident 2</div>
-        Classic UK double deck bus from the early 2000s.
-    </div>
+<div class="bus-card">
+<div class="bus-name">ADL Enviro400 MMC</div>
+Dominant modern double decker across the UK.
 </div>
 
-<!-- COACHES -->
+<div class="bus-card">
+<div class="bus-name">Wright StreetDeck</div>
+Used by First, Go-Ahead and Stagecoach.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Volvo B5LH Hybrid</div>
+Hybrid double deck bus widely used in London.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Dennis Trident 2</div>
+Classic early-2000s UK double decker.
+</div>
+</div>
+
+<!-- ELECTRIC -->
+<div id="electric" class="bus-section">
+<h2>Electric Buses</h2>
+
+<button class="sub-button">BYD-ADL</button>
+<button class="sub-button">Yutong</button>
+<button class="sub-button">Wright</button>
+
+<div class="bus-card">
+<div class="bus-name">ADL Enviro400EV</div>
+Fully electric double decker used by TfL.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">BYD-ADL Enviro200EV</div>
+Electric single deck bus used by Go-Ahead and Arriva.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Wright Electroliner</div>
+Electric double decker replacing diesel fleets.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Yutong E10 / E12</div>
+Electric buses used by regional UK operators.
+</div>
+</div>
+
+<!-- COACH -->
 <div id="coach" class="bus-section">
-    <h2>Coaches</h2>
+<h2>Coaches</h2>
 
-    <div class="bus-card">
-        <div class="bus-name">Plaxton Panther</div>
-        Popular long-distance coach used by National Express operators.
-    </div>
+<div class="bus-card">
+<div class="bus-name">Plaxton Panther</div>
+Used by National Express and private operators.
+</div>
 
-    <div class="bus-card">
-        <div class="bus-name">Volvo B11R</div>
-        Powerful motorway coach chassis.
-    </div>
+<div class="bus-card">
+<div class="bus-name">Volvo B11R</div>
+Motorway coach chassis for long-distance work.
+</div>
 
-    <div class="bus-card">
-        <div class="bus-name">Scania K410EB</div>
-        High-capacity touring coach used across the UK.
-    </div>
+<div class="bus-card">
+<div class="bus-name">Scania K410EB</div>
+Touring coach used across the UK.
+</div>
+</div>
 
-    <div class="bus-card">
-        <div class="bus-name">Plaxton Elite i</div>
-        Premium coach body used on executive services.
-    </div>
+<!-- UPDATES -->
+<div id="updates" class="bus-section">
+<h2>Site Updates</h2>
+
+<div class="bus-card">
+<div class="bus-name">12 December</div>
+Added search bar, electric buses, manufacturers, and UK operators.
+</div>
+
+<div class="bus-card">
+<div class="bus-name">11 December</div>
+Expanded bus lists and fixed navigation bugs.
+</div>
 </div>
 
 <script>
-function showSection(id) {
-    document.querySelectorAll('.bus-section').forEach(section => {
-        section.style.display = 'none';
+function showSection(id){
+    document.querySelectorAll('.bus-section').forEach(s=>s.style.display='none');
+    document.getElementById(id).style.display='block';
+}
+
+function searchBuses(text){
+    text=text.toLowerCase();
+    document.querySelectorAll('.bus-card').forEach(card=>{
+        card.style.display = card.innerText.toLowerCase().includes(text) ? "block" : "none";
     });
-    document.getElementById(id).style.display = 'block';
 }
 </script>
 
