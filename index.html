@@ -14,9 +14,7 @@ body {
     text-align: center;
 }
 
-h1 { margin-bottom: 10px; }
-
-.category-button, .sub-button {
+.category-button {
     padding: 12px 20px;
     margin: 6px;
     background: #007bff;
@@ -24,11 +22,7 @@ h1 { margin-bottom: 10px; }
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
 }
-
-.sub-button { background:#444; }
-.category-button:hover, .sub-button:hover { opacity:0.85; }
 
 .bus-section { display:none; margin-top:20px; }
 
@@ -42,16 +36,14 @@ h1 { margin-bottom: 10px; }
     text-align:left;
 }
 
-.bus-name { font-weight:bold; font-size:18px; margin-bottom:6px; }
+.bus-name { font-weight:bold; font-size:18px; }
 
 .search {
     width:90%;
     max-width:500px;
     padding:12px;
-    font-size:16px;
     border-radius:10px;
     border:1px solid #ccc;
-    margin:15px 0;
 }
 </style>
 </head>
@@ -60,9 +52,9 @@ h1 { margin-bottom: 10px; }
 
 <h1>Bus Types in the UK</h1>
 
-<input class="search" placeholder="Search buses, operators or manufacturers…" onkeyup="searchBuses(this.value)">
+<input class="search" placeholder="Search buses, operators, manufacturers…" onkeyup="searchBuses(this.value)">
 
-<br>
+<br><br>
 
 <button class="category-button" onclick="showSection('home')">Home</button>
 <button class="category-button" onclick="showSection('minibus')">Minibuses</button>
@@ -78,11 +70,9 @@ h1 { margin-bottom: 10px; }
 
 <!-- HOME -->
 <div id="home" class="bus-section" style="display:block;">
-<p>A growing database of UK bus types, fleets, and operators.</p>
-
 <div class="bus-card">
-<div class="bus-name">Major UK Operators</div>
-Arriva • First Bus • Stagecoach • Go-Ahead • National Express • Transport for London
+<div class="bus-name">Welcome</div>
+Explore UK buses by type, operator, and region.
 </div>
 </div>
 
@@ -90,190 +80,120 @@ Arriva • First Bus • Stagecoach • Go-Ahead • National Express • Transp
 <div id="minibus" class="bus-section">
 <h2>Minibuses</h2>
 
-<div class="bus-card">
-<div class="bus-name">Optare Solo Slimline</div>
-Used on narrow routes by Stagecoach and independent operators.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Mellor Strata</div>
-Mercedes Sprinter-based low-floor minibus.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Mellor Orion</div>
-Community and demand-responsive services.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">ADL Enviro200 MMC (Short)</div>
-Often replaces minibuses on busier rural routes.
-</div>
+<div class="bus-card"><div class="bus-name">Optare Solo Slimline</div>Narrow-route minibus</div>
+<div class="bus-card"><div class="bus-name">Optare Solo SR</div>Updated Solo design</div>
+<div class="bus-card"><div class="bus-name">Mellor Strata</div>Sprinter-based minibus</div>
+<div class="bus-card"><div class="bus-name">Mellor Orion</div>Community services</div>
+<div class="bus-card"><div class="bus-name">Mellor Aries</div>Compact low-floor</div>
+<div class="bus-card"><div class="bus-name">ADL Enviro200 MMC (Short)</div>Minibus replacement</div>
+<div class="bus-card"><div class="bus-name">Wright StreetLite DF</div>Small single decker</div>
+<div class="bus-card"><div class="bus-name">Ford Transit Minibus</div>School & private hire</div>
+<div class="bus-card"><div class="bus-name">Mercedes Sprinter</div>Rural routes</div>
+<div class="bus-card"><div class="bus-name">Iveco Daily Minibus</div>Local operators</div>
 </div>
 
 <!-- SINGLE -->
 <div id="single" class="bus-section">
 <h2>Single Deckers</h2>
 
-<div class="bus-card">
-<div class="bus-name">ADL Enviro200 MMC</div>
-Most common UK single deck bus – Arriva, First, Stagecoach.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Wright StreetLite</div>
-Lightweight bus used by Go-Ahead and Arriva.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Optare MetroCity</div>
-British-built low-emission single deck bus.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Volvo B8RLE</div>
-Chassis used with Wright and MCV bodies.
-</div>
+<div class="bus-card"><div class="bus-name">ADL Enviro200 MMC</div>Most common UK single deck</div>
+<div class="bus-card"><div class="bus-name">Wright StreetLite</div>Lightweight city bus</div>
+<div class="bus-card"><div class="bus-name">Wright StreetDeck SD</div>High-capacity single deck</div>
+<div class="bus-card"><div class="bus-name">Optare MetroCity</div>Low emission bus</div>
+<div class="bus-card"><div class="bus-name">Optare Versa</div>Midibus design</div>
+<div class="bus-card"><div class="bus-name">Volvo B8RLE</div>Popular chassis</div>
+<div class="bus-card"><div class="bus-name">Scania K280UB</div>Urban single deck</div>
+<div class="bus-card"><div class="bus-name">Dennis Dart SLF</div>Classic UK bus</div>
+<div class="bus-card"><div class="bus-name">MAN A22</div>Less common UK type</div>
+<div class="bus-card"><div class="bus-name">MCV Evora</div>Modern single deck body</div>
 </div>
 
 <!-- DOUBLE -->
 <div id="double" class="bus-section">
 <h2>Double Deckers</h2>
 
-<div class="bus-card">
-<div class="bus-name">ADL Enviro400 MMC</div>
-The dominant modern double decker in the UK.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Wright StreetDeck</div>
-Common with First Bus and Go-Ahead.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Volvo B5LH Hybrid</div>
-Hybrid double deck bus used widely in London.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Dennis Trident 2</div>
-Classic early-2000s double decker.
-</div>
+<div class="bus-card"><div class="bus-name">ADL Enviro400 MMC</div>Most common modern double deck</div>
+<div class="bus-card"><div class="bus-name">Wright StreetDeck</div>Modern lightweight design</div>
+<div class="bus-card"><div class="bus-name">Volvo B5LH</div>Hybrid double deck</div>
+<div class="bus-card"><div class="bus-name">Volvo B9TL</div>Older London bus</div>
+<div class="bus-card"><div class="bus-name">Dennis Trident 2</div>Early 2000s classic</div>
+<div class="bus-card"><div class="bus-name">Scania N230UD</div>UK-spec Scania</div>
+<div class="bus-card"><div class="bus-name">Wright Gemini 2</div>Common body type</div>
+<div class="bus-card"><div class="bus-name">Wright Gemini 3</div>Modern Gemini</div>
+<div class="bus-card"><div class="bus-name">Leyland Olympian</div>Historic double deck</div>
+<div class="bus-card"><div class="bus-name">MCV EvoSeti</div>Newer UK double deck</div>
 </div>
 
 <!-- ELECTRIC -->
 <div id="electric" class="bus-section">
 <h2>Electric Buses</h2>
 
-<div class="bus-card">
-<div class="bus-name">BYD-ADL Enviro200EV</div>
-Electric single deck bus used by Arriva and Go-Ahead.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">BYD-ADL Enviro400EV</div>
-Electric double decker used in London.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Wright Electroliner</div>
-Electric double decker replacing diesel fleets.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Yutong E10 / E12</div>
-Electric buses used by regional UK operators.
-</div>
+<div class="bus-card"><div class="bus-name">BYD-ADL Enviro200EV</div>Electric single deck</div>
+<div class="bus-card"><div class="bus-name">BYD-ADL Enviro400EV</div>Electric double deck</div>
+<div class="bus-card"><div class="bus-name">Wright Electroliner</div>Battery electric DD</div>
+<div class="bus-card"><div class="bus-name">Wright GB Kite</div>Electric single deck</div>
+<div class="bus-card"><div class="bus-name">Yutong E10</div>Electric midibus</div>
+<div class="bus-card"><div class="bus-name">Yutong E12</div>Electric city bus</div>
+<div class="bus-card"><div class="bus-name">Switch Metrodecker</div>Electric double deck</div>
+<div class="bus-card"><div class="bus-name">Optare Metrodecker EV</div>Electric Optare</div>
+<div class="bus-card"><div class="bus-name">Irizar ie Tram</div>Electric BRT-style bus</div>
+<div class="bus-card"><div class="bus-name">Alexander Dennis Enviro100EV</div>Electric minibus</div>
 </div>
 
 <!-- COACH -->
 <div id="coach" class="bus-section">
 <h2>Coaches</h2>
 
-<div class="bus-card">
-<div class="bus-name">Plaxton Panther</div>
-Used by National Express and private operators.
+<div class="bus-card"><div class="bus-name">Plaxton Panther</div>National Express</div>
+<div class="bus-card"><div class="bus-name">Plaxton Leopard</div>Interurban coach</div>
+<div class="bus-card"><div class="bus-name">Volvo B11R</div>Long-distance coach</div>
+<div class="bus-card"><div class="bus-name">Volvo B9R</div>Older coach chassis</div>
+<div class="bus-card"><div class="bus-name">Scania K410EB</div>Touring coach</div>
+<div class="bus-card"><div class="bus-name">Scania K360EB</div>Express coach</div>
+<div class="bus-card"><div class="bus-name">Mercedes Tourismo</div>Modern coach</div>
+<div class="bus-card"><div class="bus-name">Setra S417</div>Luxury coach</div>
+<div class="bus-card"><div class="bus-name">Van Hool T9</div>Touring coach</div>
+<div class="bus-card"><div class="bus-name">Irizar i6</div>UK touring coach</div>
 </div>
 
-<div class="bus-card">
-<div class="bus-name">Volvo B11R</div>
-Long-distance motorway coach chassis.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Scania K410EB</div>
-Touring coach widely used in the UK.
-</div>
-</div>
-
-<!-- LONDON ONLY -->
+<!-- LONDON -->
 <div id="london" class="bus-section">
-<h2>London Buses (TfL)</h2>
+<h2>London Only (TfL)</h2>
 
-<div class="bus-card">
-<div class="bus-name">New Routemaster (LT)</div>
-Hybrid double decker unique to London.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">ADL Enviro400 MMC</div>
-Most common TfL double deck bus.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">BYD-ADL Enviro400EV</div>
-Zero-emission double decker.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Wright StreetDeck HEV</div>
-Hybrid bus used on London routes.
-</div>
+<div class="bus-card"><div class="bus-name">New Routemaster (LT)</div>London exclusive</div>
+<div class="bus-card"><div class="bus-name">ADL Enviro400 MMC</div>Main TfL DD</div>
+<div class="bus-card"><div class="bus-name">BYD-ADL Enviro400EV</div>Electric TfL DD</div>
+<div class="bus-card"><div class="bus-name">Volvo B5LH</div>Hybrid TfL</div>
+<div class="bus-card"><div class="bus-name">Volvo B9TL</div>Older TfL bus</div>
+<div class="bus-card"><div class="bus-name">Wright Gemini 3</div>Common TfL body</div>
+<div class="bus-card"><div class="bus-name">Optare MetroCity</div>Single deck TfL</div>
+<div class="bus-card"><div class="bus-name">ADL Enviro200 MMC</div>Single deck TfL</div>
+<div class="bus-card"><div class="bus-name">Scania N230UD</div>London routes</div>
+<div class="bus-card"><div class="bus-name">MCV EvoSeti</div>Newer TfL DD</div>
 </div>
 
 <!-- OPERATORS -->
 <div id="operators" class="bus-section">
-<h2>UK Bus Operators & Fleets</h2>
+<h2>Operators</h2>
 
-<div class="bus-card">
-<div class="bus-name">Arriva</div>
-Enviro200 MMC • Enviro400 MMC • Wright StreetLite
-</div>
-
-<div class="bus-card">
-<div class="bus-name">First Bus</div>
-StreetDeck • Enviro400 MMC • Wright Electroliner
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Stagecoach</div>
-Enviro200 MMC • Enviro400 MMC • Optare Solo
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Go-Ahead Group</div>
-BYD-ADL Enviro200EV • Enviro400EV • StreetLite
-</div>
-
-<div class="bus-card">
-<div class="bus-name">Transport for London</div>
-New Routemaster • Enviro400EV • Volvo B5LH
-</div>
+<div class="bus-card"><div class="bus-name">Arriva</div>Enviro200 • Enviro400 • StreetLite</div>
+<div class="bus-card"><div class="bus-name">First Bus</div>StreetDeck • Electroliner</div>
+<div class="bus-card"><div class="bus-name">Stagecoach</div>Enviro200 • Enviro400 • Solo</div>
+<div class="bus-card"><div class="bus-name">Go-Ahead</div>Enviro400EV • StreetLite</div>
+<div class="bus-card"><div class="bus-name">TfL</div>LT • Enviro400EV</div>
+<div class="bus-card"><div class="bus-name">National Express</div>Plaxton Panther</div>
+<div class="bus-card"><div class="bus-name">Reading Buses</div>Enviro400 • StreetDeck</div>
+<div class="bus-card"><div class="bus-name">Lothian Buses</div>Enviro400 • Volvo B5LH</div>
+<div class="bus-card"><div class="bus-name">Oxford Bus Company</div>MetroCity • StreetDeck</div>
+<div class="bus-card"><div class="bus-name">Brighton & Hove</div>Enviro400 • Metrodecker</div>
 </div>
 
 <!-- UPDATES -->
 <div id="updates" class="bus-section">
-<h2>Site Updates</h2>
+<h2>Updates</h2>
 
-<div class="bus-card">
-<div class="bus-name">12 December</div>
-Added London-only section and UK operator fleet lists.
-</div>
-
-<div class="bus-card">
-<div class="bus-name">11 December</div>
-Expanded bus lists and fixed section display bugs.
-</div>
+<div class="bus-card"><div class="bus-name">Latest</div>Added 10+ buses to every section</div>
+<div class="bus-card"><div class="bus-name">Previous</div>́London & operator sections added</div>
 </div>
 
 <script>
@@ -281,7 +201,6 @@ function showSection(id){
     document.querySelectorAll('.bus-section').forEach(s=>s.style.display='none');
     document.getElementById(id).style.display='block';
 }
-
 function searchBuses(text){
     text=text.toLowerCase();
     document.querySelectorAll('.bus-card').forEach(card=>{
