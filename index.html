@@ -2,80 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bus Types in the UK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* =========================
-   BASIC PAGE STYLES
-   ========================= */
-
 body {
     font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
+    background:#f2f2f2;
+    margin:0;
+    padding:20px;
+    text-align:center;
 }
 
-/* =========================
-   BUTTON STYLES
-   ========================= */
+h1 { margin-bottom:10px; }
 
-.category-button {
-    padding: 18px 32px;
-    margin: 6px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 17px;
+button {
+    padding:16px 30px;
+    margin:6px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+}
+button:hover { background:#0056b3; }
+
+.search {
+    width:90%;
+    max-width:500px;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
 }
 
-.category-button:hover {
-    background: #0056b3;
-}
-
-/* =========================
-   BUS SECTIONS
-   ========================= */
-
-.bus-section {
-    display: none;
-    margin-top: 20px;
-}
-
-/* =========================
-   BUS CARDS
-   ========================= */
+.section { display:none; margin-top:20px; }
 
 .bus-card {
-    background: white;
-    padding: 15px;
-    margin: 10px auto;
-    max-width: 650px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    text-align: left;
+    background:white;
+    margin:12px auto;
+    padding:16px;
+    max-width:700px;
+    border-radius:12px;
+    box-shadow:0 4px 8px rgba(0,0,0,.15);
+    text-align:left;
 }
 
 .bus-name {
-    font-weight: bold;
-    font-size: 18px;
+    font-weight:bold;
+    font-size:18px;
+    margin-bottom:4px;
 }
 
-/* =========================
-   SEARCH BAR
-   ========================= */
-
-.search {
-    width: 90%;
-    max-width: 500px;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-}
+.manufacturers { display:none; margin-top:10px; }
+hr { margin:25px 0; }
 </style>
 </head>
 
@@ -83,159 +63,237 @@ body {
 
 <h1>Bus Types in the UK</h1>
 
-<input class="search"
-       placeholder="Search buses, operators, manufacturers…"
-       onkeyup="searchBuses(this.value)">
+<input class="search" placeholder="Search buses, operators, manufacturers..."
+onkeyup="searchBuses(this.value)">
 
 <br><br>
 
-<!-- =========================
-     MAIN NAVIGATION BUTTONS
-     ========================= -->
+<!-- MAIN NAV -->
+<button onclick="openSection('home',false)">Home</button>
+<button onclick="openSection('minibus',true)">Minibuses</button>
+<button onclick="openSection('single',true)">Single Deckers</button>
+<button onclick="openSection('double',true)">Double Deckers</button>
+<button onclick="openSection('electric',true)">Electric</button>
+<button onclick="openSection('coach',true)">Coaches</button>
+<button onclick="openSection('london',true)">London Only</button>
+<button onclick="openSection('operators',false)">Operators</button>
+<button onclick="openSection('updates',false)">Updates</button>
 
-<button class="category-button" onclick="showSection('home')">Home</button>
-<button class="category-button" onclick="showSection('minibus')">Minibuses</button>
-<button class="category-button" onclick="showSection('single')">Single Deckers</button>
-<button class="category-button" onclick="showSection('double')">Double Deckers</button>
-<button class="category-button" onclick="showSection('electric')">Electric</button>
-<button class="category-button" onclick="showSection('coach')">Coaches</button>
-<button class="category-button" onclick="showSection('london')">London Only</button>
-<button class="category-button" onclick="showSection('operators')">Operators</button>
-<button class="category-button" onclick="showSection('updates')">Updates</button>
-
-<br><br>
-
-<!-- =========================
-     MANUFACTURER BUTTONS
-     (VISIBLE ONLY ON BUS PAGES)
-     ========================= -->
-
-<div id="manufacturerButtons">
-
-<button class="category-button" onclick="filterManufacturer('adl')">Alexander Dennis</button>
-<button class="category-button" onclick="filterManufacturer('wright')">Wrightbus</button>
-<button class="category-button" onclick="filterManufacturer('optare')">Optare</button>
-<button class="category-button" onclick="filterManufacturer('volvo')">Volvo</button>
-<button class="category-button" onclick="filterManufacturer('scania')">Scania</button>
-<button class="category-button" onclick="filterManufacturer('all')">Show All</button>
-
+<!-- MANUFACTURERS -->
+<div class="manufacturers" id="makers">
+<hr>
+<button onclick="filterMaker('adl')">Alexander Dennis</button>
+<button onclick="filterMaker('wright')">Wrightbus</button>
+<button onclick="filterMaker('optare')">Optare</button>
+<button onclick="filterMaker('volvo')">Volvo</button>
+<button onclick="filterMaker('scania')">Scania</button>
+<button onclick="filterMaker('all')">Show All</button>
 </div>
 
 <hr>
 
-<!-- =========================
-     HOME
-     ========================= -->
-
-<div id="home" class="bus-section" style="display:block;">
-    <div class="bus-card">
-        <div class="bus-name">Welcome</div>
-        Explore UK buses by type, operator, and region.
-    </div>
+<!-- HOME -->
+<div id="home" class="section" style="display:block;">
+<div class="bus-card">
+<div class="bus-name">Welcome</div>
+Explore UK buses by type, manufacturer, operator and region.
+</div>
 </div>
 
-<!-- =========================
-     (ALL YOUR BUS SECTIONS
-     REMAIN UNCHANGED BELOW)
-     ========================= -->
+<!-- MINIBUS -->
+<div id="minibus" class="section">
+<h2>Minibuses</h2>
 
-<!-- MINIBUS / SINGLE / DOUBLE / ELECTRIC / COACH / LONDON / OPERATORS / UPDATES -->
-<!-- (CONTENT REMAINS EXACTLY AS YOU POSTED) -->
+<div class="bus-card" data-maker="optare">
+<div class="bus-name">Optare Solo Slimline</div>
+Narrow routes and rural services
+</div>
 
-<!-- =========================
-     SCRIPT (EXPANDED, NOT REFACTORED)
-     ========================= -->
+<div class="bus-card" data-maker="optare">
+<div class="bus-name">Optare Solo SR</div>
+Updated Solo with modern styling
+</div>
+
+<div class="bus-card" data-maker="adl">
+<div class="bus-name">ADL Enviro200 MMC (Short)</div>
+Short-wheelbase minibus
+</div>
+
+<div class="bus-card" data-maker="wright">
+<div class="bus-name">Wright StreetLite DF</div>
+Compact low-floor design
+</div>
+
+<div class="bus-card" data-maker="mellor">
+<div class="bus-name">Mellor Orion</div>
+Community transport minibus
+</div>
+</div>
+
+<!-- SINGLE -->
+<div id="single" class="section">
+<h2>Single Deckers</h2>
+
+<div class="bus-card" data-maker="adl">
+<div class="bus-name">Enviro200 MMC</div>
+Most common UK single deck
+</div>
+
+<div class="bus-card" data-maker="wright">
+<div class="bus-name">StreetLite</div>
+Lightweight city bus
+</div>
+
+<div class="bus-card" data-maker="optare">
+<div class="bus-name">MetroCity</div>
+Low emission single deck
+</div>
+
+<div class="bus-card" data-maker="volvo">
+<div class="bus-name">Volvo B8RLE</div>
+Widely used chassis
+</div>
+
+<div class="bus-card" data-maker="scania">
+<div class="bus-name">Scania K280UB</div>
+Urban single deck
+</div>
+</div>
+
+<!-- DOUBLE -->
+<div id="double" class="section">
+<h2>Double Deckers</h2>
+
+<div class="bus-card" data-maker="adl">
+<div class="bus-name">Enviro400 MMC</div>
+Modern UK standard double deck
+</div>
+
+<div class="bus-card" data-maker="wright">
+<div class="bus-name">StreetDeck</div>
+Lightweight DD
+</div>
+
+<div class="bus-card" data-maker="volvo">
+<div class="bus-name">Volvo B5LH</div>
+Hybrid double deck
+</div>
+
+<div class="bus-card" data-maker="scania">
+<div class="bus-name">Scania N230UD</div>
+UK-spec Scania DD
+</div>
+</div>
+
+<!-- ELECTRIC -->
+<div id="electric" class="section">
+<h2>Electric Buses</h2>
+
+<div class="bus-card" data-maker="adl">
+<div class="bus-name">Enviro200EV</div>
+Electric single deck
+</div>
+
+<div class="bus-card" data-maker="adl">
+<div class="bus-name">Enviro400EV</div>
+Electric double deck
+</div>
+
+<div class="bus-card" data-maker="wright">
+<div class="bus-name">GB Kite</div>
+Electric SD
+</div>
+
+<div class="bus-card" data-maker="wright">
+<div class="bus-name">Electroliner</div>
+Electric DD
+</div>
+</div>
+
+<!-- COACH -->
+<div id="coach" class="section">
+<h2>Coaches</h2>
+
+<div class="bus-card">
+<div class="bus-name">Plaxton Panther</div>
+National Express fleet
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Volvo B11R</div>
+Long-distance coach
+</div>
+</div>
+
+<!-- LONDON -->
+<div id="london" class="section">
+<h2>London Only</h2>
+
+<div class="bus-card">
+<div class="bus-name">New Routemaster (LT)</div>
+TfL exclusive
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Enviro400 MMC</div>
+Main TfL DD
+</div>
+</div>
+
+<!-- OPERATORS -->
+<div id="operators" class="section">
+<h2>Operators</h2>
+
+<div class="bus-card">
+<div class="bus-name">Stagecoach</div>
+Enviro200 • Enviro400
+</div>
+
+<div class="bus-card">
+<div class="bus-name">First Bus</div>
+StreetDeck • Electroliner
+</div>
+</div>
+
+<!-- UPDATES -->
+<div id="updates" class="section">
+<h2>Updates</h2>
+
+<div class="bus-card">
+<div class="bus-name">Latest</div>
+Added manufacturer filtering
+</div>
+
+<div class="bus-card">
+<div class="bus-name">Previous</div>
+London section added
+</div>
+</div>
 
 <script>
-
-/* =====================================
-   SHOW SECTION FUNCTION
-   ===================================== */
-
-function showSection(id) {
-
-    // Hide all sections first
-    document.querySelectorAll('.bus-section').forEach(section => {
-        section.style.display = 'none';
-    });
-
-    // Show selected section
-    document.getElementById(id).style.display = 'block';
-
-    /* -------------------------------------
-       Manufacturer button visibility logic
-       ------------------------------------- */
-
-    const busPages = [
-        'minibus',
-        'single',
-        'double',
-        'electric',
-        'coach',
-        'london'
-    ];
-
-    const manufacturerDiv = document.getElementById('manufacturerButtons');
-
-    if (busPages.includes(id)) {
-        manufacturerDiv.style.display = 'block';
-    } else {
-        manufacturerDiv.style.display = 'none';
-    }
+function openSection(id, showMakers){
+    document.querySelectorAll('.section').forEach(s=>s.style.display='none');
+    document.getElementById(id).style.display='block';
+    document.getElementById('makers').style.display = showMakers ? 'block' : 'none';
+    filterMaker('all');
 }
 
-/* =====================================
-   SEARCH FUNCTION
-   ===================================== */
-
-function searchBuses(text) {
-
-    // Convert search text to lowercase
-    text = text.toLowerCase();
-
-    // Loop through all bus cards
-    document.querySelectorAll('.bus-card').forEach(card => {
-
-        // If card text matches search, show it
-        if (card.innerText.toLowerCase().includes(text)) {
-            card.style.display = 'block';
+function filterMaker(m){
+    document.querySelectorAll('.bus-card').forEach(c=>{
+        if(m==='all'||c.dataset.maker===m||!c.dataset.maker){
+            c.style.display='block';
         } else {
-            card.style.display = 'none';
+            c.style.display='none';
         }
-
     });
 }
 
-/* =====================================
-   MANUFACTURER FILTER FUNCTION
-   ===================================== */
-
-function filterManufacturer(make) {
-
-    // Loop through all bus cards
-    document.querySelectorAll('.bus-card').forEach(card => {
-
-        // Show all buses
-        if (make === 'all') {
-            card.style.display = 'block';
-            return;
-        }
-
-        // Show only matching manufacturer
-        if (card.dataset.maker === make) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-
+function searchBuses(t){
+    t=t.toLowerCase();
+    document.querySelectorAll('.bus-card').forEach(c=>{
+        c.style.display=c.innerText.toLowerCase().includes(t)?'block':'none';
     });
 }
-
-/* =====================================
-   END OF SCRIPT
-   (INTENTIONALLY VERBOSE)
-   ===================================== */
-
 </script>
 
 </body>
